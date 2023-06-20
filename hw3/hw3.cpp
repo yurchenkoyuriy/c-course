@@ -43,5 +43,25 @@ int main()
     std::cout << "5 values after point(e-notation): " << std::fixed << std::setprecision(5) << someValue << std::endl;
     std::cout << "10 values after point(e-notation): " << std::fixed << std::setprecision(10) << someValue << std::endl;
 
+    // Part 4 - Enum WeekDay
+    std::cout << std::endl << "Part 4" << std::endl;
+    enum class WeekDay {
+        monday = 1,
+        tuesday = 2,
+        wednesday = 3,
+        thursday = 4,
+        friday = 5,
+        saturday = 6,
+        sunday = 7
+    };
+
+    std::cout << int(WeekDay::monday) << std::endl;
+    std::cout << int(WeekDay::tuesday) << std::endl;
+    std::cout << int(WeekDay::wednesday) << std::endl;
+    std::cout << int(WeekDay::thursday) << std::endl;
+    std::cout << int(WeekDay::friday) << std::endl;
+    std::cout << int(WeekDay::saturday) << std::endl;
+    std::cout << int(WeekDay::sunday) << std::endl;
+    
     return 0;
 }
