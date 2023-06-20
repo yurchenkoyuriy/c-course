@@ -63,5 +63,17 @@ int main()
     std::cout << int(WeekDay::saturday) << std::endl;
     std::cout << int(WeekDay::sunday) << std::endl;
     
+    // 5 - Bool to pretty output
+    std::cout << std::endl << "Part 5" << std::endl;
+
+    int number;
+    
+    std::cout << "Enter some number: ";
+    std::cin >> number;
+
+    bool flag = number;
+
+    std::cout << "Bool value: " << std::boolalpha << flag;
+
     return 0;
 }
