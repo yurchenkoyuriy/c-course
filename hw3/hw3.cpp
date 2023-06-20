@@ -4,6 +4,8 @@
 int main()
 {
     // Part 1 - Change value of 2 input numbers
+    std::cout << "Part 1" << std::endl;
+
     int num1;
     int num2;
     int temp;
@@ -17,15 +19,29 @@ int main()
     num1 = num2;
     num2 = temp;
     
-    std::cout << "integer 1: " << num1 << std::endl;
-    std::cout << "integer 2: " << num2 << std::endl;
+    std::cout << "Integer 1: " << num1 << std::endl;
+    std::cout << "Integer 2: " << num2 << std::endl;
 
     // Part 2 - Init and work with double
+    std::cout << std::endl << "Part 2" << std::endl;
+
     double value = 23.345383487;
 
-    std::cout << value << std::endl;
-    std::cout << (int) value << std::endl;
-    std::cout << std::setw(20) << std::right << std::setfill('$') << value << std::endl;
+    std::cout << "Double: " << value << std::endl;
+    std::cout << "Double to Int: " << (int) value << std::endl;
+    std::cout << "Format Double: " << std::setw(20) << std::right << std::setfill('$') << value << std::endl;
+
+    // Part 3 - Format double
+    std::cout << std::endl << "Part 3" << std::endl;
+
+    double someValue = 2323.3453834871234;
+
+    std::cout << "2 values after point: " << std::setprecision(2) << someValue << std::endl;
+    std::cout << "5 values after point: " << std::setprecision(5) << someValue << std::endl;
+    std::cout << "10 values after point: " << std::setprecision(10) << someValue << std::endl;
+    std::cout << "2 values after point(e-notation): " << std::fixed << std::setprecision(2) << someValue << std::endl;
+    std::cout << "5 values after point(e-notation): " << std::fixed << std::setprecision(5) << someValue << std::endl;
+    std::cout << "10 values after point(e-notation): " << std::fixed << std::setprecision(10) << someValue << std::endl;
 
     return 0;
 }
