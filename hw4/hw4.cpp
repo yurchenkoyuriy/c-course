@@ -7,7 +7,7 @@ int main()
     std::cout << std::setw(30) << std::setfill('*') << std::left << "Part 1 " << std::endl;
     std::cout << "Enter seconds: ";
     
-    int seconds;
+    int seconds(0);
     
     std::cin >> seconds;
 
@@ -20,9 +20,9 @@ int main()
     // 3 values
     std::cout << std::endl << std::setw(30) << std::setfill('*') << std::left << "Part 2 " << std::endl;
 
-    int a;
-    int b;
-    int c;
+    int a(0);
+    int b(0);
+    int c(0);
 
     std::cout << "Enter first number: ";
     std::cin >> a;
@@ -42,8 +42,8 @@ int main()
     // Bools
     std::cout << std::endl << std::setw(30) << std::setfill('*') << std::left << "Part 3 " << std::endl;
 
-    int num1;
-    int num2;
+    int num1(0);
+    int num2(0);
 
     std::cout << "Enter first number: ";
     std::cin >> num1;
@@ -63,8 +63,8 @@ int main()
     // Rectangel
     std::cout << std::endl << std::setw(30) << std::setfill('*') << std::left << "Part 4 " << std::endl;
 
-    int width;
-    int height;
+    int width(0);
+    int height(0);
 
     std::cout << "Enter width: ";
     std::cin >> width;
@@ -81,7 +81,7 @@ int main()
     std::cout << std::endl << std::setw(30) << std::setfill('*') << std::left << "Part 5 " << std::endl;
 
     float p = 3.14;
-    int radius;
+    int radius(0);
 
     std::cout << "Enter circle radius: ";
     std::cin >> radius;
