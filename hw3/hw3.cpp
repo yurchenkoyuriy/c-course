@@ -6,9 +6,9 @@ int main()
     // Part 1 - Change value of 2 input numbers
     std::cout << "Part 1" << std::endl;
 
-    int num1;
-    int num2;
-    int temp;
+    int num1 = 0;
+    int num2 = 0;
+    int temp = 0;
 
     std::cout << "Enter integer 1: ";
     std::cin >> num1;    
@@ -66,12 +66,10 @@ int main()
     // 5 - Bool to pretty output
     std::cout << std::endl << "Part 5" << std::endl;
 
-    int number;
+    bool flag = false;
     
     std::cout << "Enter some number: ";
-    std::cin >> number;
-
-    bool flag = number;
+    std::cin >> flag;
 
     std::cout << "Bool value: " << std::boolalpha << flag;
 
