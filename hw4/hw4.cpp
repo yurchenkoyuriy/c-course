@@ -11,8 +11,8 @@ int main()
     
     std::cin >> seconds;
 
-    int hours = seconds / (3600);
-    int minutes = (seconds % 3600) / (60);
+    int hours = seconds / 3600;
+    int minutes = (seconds % 3600) / 60;
     seconds = seconds % 60;
 
     std::cout << hours << " hour " << minutes << " minutes " << seconds << " seconds " << std::endl;
@@ -35,7 +35,7 @@ int main()
 
     std::cout << "Suma: " << sum << std::endl;
     std::cout << "Product: " << a * b * c << std::endl;
-    std::cout << "Avg: " << sum / 3 << std::endl;
+    std::cout << "Avg: " << sum / 3.0 << std::endl;
     std::cout << "A equal to B: " << (a == b) << std::endl;
     std::cout << "B equal to C: " << (b == c) << std::endl;
 
@@ -80,7 +80,7 @@ int main()
     // Circle
     std::cout << std::endl << std::setw(30) << std::setfill('*') << std::left << "Part 5 " << std::endl;
 
-    float p = 3.14;
+    const float p = 3.14;
     int radius(0);
 
     std::cout << "Enter circle radius: ";
