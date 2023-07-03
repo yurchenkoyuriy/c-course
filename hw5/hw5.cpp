@@ -20,7 +20,7 @@ int main()
     {
         max = a;
     }
-    else if (b > a && b > c)
+    else if (b > c)
     {
         max = b;
     }
@@ -73,7 +73,11 @@ int main()
     std::cout << "Enter third angel: ";
     std::cin >> angel3;
 
-    if ((angel1 + angel2 + angel3) == 180) {
+    if (angel1 == 0 || angel2 == 0 || angel3 == 0) {
+        std::cout << "All angles must be greater than zero." << std::endl;
+    } 
+    else if ((angel1 + angel2 + angel3) == 180) 
+    {
         std::cout << "This is triangle" << std::endl;
     } 
     else
@@ -102,42 +106,44 @@ int main()
     std::cout << "Enter month number: ";
     std::cin >> month;
 
-    switch (month)
+    const auto finalMonth = Month(month);
+
+    switch (finalMonth)
     {
-        case int(Month::january):
+        case Month::january:
             std::cout << "january" << std::endl;
             break;
-        case int(Month::february):
+        case Month::february:
             std::cout << "february" << std::endl;
             break;
-        case int(Month::march):
+        case Month::march:
             std::cout << "march" << std::endl;
             break;
-        case int(Month::april) :
+        case Month::april:
             std::cout << "april" << std::endl;
             break;
-        case int(Month::may) :
+        case Month::may:
             std::cout << "may" << std::endl;
             break;
-        case int(Month::june):
+        case Month::june:
             std::cout << "june" << std::endl;
             break;
-        case int(Month::july) :
+        case Month::july:
             std::cout << "july" << std::endl;
             break;
-        case int(Month::august) :
+        case Month::august:
             std::cout << "august" << std::endl;
             break;
-        case int(Month::september) :
+        case Month::september:
             std::cout << "september" << std::endl;
             break;
-        case int(Month::october) :
+        case Month::october:
             std::cout << "october" << std::endl;
             break;
-        case int(Month::november) :
+        case Month::november:
             std::cout << "november" << std::endl;
             break;
-        case int(Month::december) :
+        case Month::december:
             std::cout << "december" << std::endl;
             break;
         default:
