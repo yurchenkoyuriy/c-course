@@ -31,26 +31,19 @@ int main()
     int number{};        
 
     unsigned long olderNumber = 0;
-    unsigned long oldNumber = 0;
-    unsigned long fibonacci = 0;    
+    unsigned long oldNumber =  1;
+    unsigned long fibonacci = 1;    
     unsigned long temp = 0;
 
     std::cout << "Enter the number of the Fibonacci sequence: ";
     std::cin >> number;
     
-    for (int i = 0; i <= number; i++) {
-        if (i == 1) {
-            oldNumber = i;
-        }
-        
+    for (int i = 2; i <= number; i++) {
         temp = olderNumber + oldNumber;
-        fibonacci += temp;
-
-        if (fibonacci > 1) {
-            olderNumber = oldNumber;
-        }     
-
+        olderNumber = oldNumber;
         oldNumber = temp;        
+
+        fibonacci += temp;
     }
 
     std::cout << "Fibonacci: " << fibonacci << std::endl;
@@ -105,13 +98,13 @@ int main()
     }
 
     std::cout << std::endl;
-    int otstp(1);
+    int indent(1);
     for (int i = 1; i <= width; i++) {
-        std::cout << std::setw(otstp) << std::setfill(' ');
+        std::cout << std::setw(indent) << std::setfill(' ');
         for (int j = 1; j <= height; j++) {
-            std::cout << "*";
+            std::cout << "w";
         }
-        otstp++;
+        indent++;
         std::cout << std::endl;
     }
 
@@ -130,27 +123,23 @@ int main()
     }
 
     // Part 5 - Program 
-    std::cout << "Part 5 - Program" << std::endl;
-    char symbol{};
+    std::cout << "Part 5 - Program" << std::endl;    
     int sum{};
-    
-    while (symbol != '.') {
+    char symbol{};
+
+    do {                
         std::cout << "Enter some char symbol: ";
         std::cin >> symbol;
 
         if (ispunct(symbol)) {
             std::cout << "This character is not processed by the program" << std::endl;
             continue;
-        }
-
-        if (islower(symbol)) {
+        } else if (islower(symbol)) {
             symbol = toupper(symbol);
             std::cout << "To upper: " << symbol << std::endl;
-        }
-
-        if (isdigit(symbol)) {
+        } else if (isdigit(symbol)) {
             sum += (int)symbol - '0'; // ASCII code of 48
             std::cout << "Summa: " << sum << std::endl;
-        }        
-    }
+        }
+    } while (symbol != '.');
 }
