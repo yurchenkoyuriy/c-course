@@ -1,7 +1,6 @@
 ﻿#include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include <ctype.h>
 
 int main()
 {    
