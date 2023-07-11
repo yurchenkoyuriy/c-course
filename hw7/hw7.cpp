@@ -28,7 +28,6 @@ int main()
             
             goal_number = std::rand() % (GeneratingRange + 1);
             gameStart = !gameStart;
-            std::cout << goal_number << std::endl;
         }
 
         std::cout << "Make your guess: ";
