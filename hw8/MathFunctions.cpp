@@ -33,7 +33,7 @@ void counting(int count)
 int factorial(int count) {
     int factorial{ 1 };
     
-    if (count == 0)
+    if (count == 1 || count == 0)
     {
         return 1;
     }
