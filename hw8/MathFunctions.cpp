@@ -33,7 +33,7 @@ void counting(int count)
 int factorial(int count) {
     int factorial{ 1 };
     
-    if (count == 1 || count == 0)
+    if (count <= 1)
     {
         return 1;
     }
@@ -49,7 +49,7 @@ int factorial(int count) {
 
 int factorialRecursion(int count) {
     int factorial{};
-    factorial = (count == 1 || count == 0) ? 1 : factorialRecursion(count - 1) * count;
+    factorial = (count <= 1) ? 1 : factorialRecursion(count - 1) * count;
     return factorial;
 }
 
