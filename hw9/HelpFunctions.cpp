@@ -25,59 +25,54 @@ void toUppercase(char str[])
 
 bool isPalindrom(const char str[])
 {
-    bool check = true;
     int length = strlen(str) - 1;    
 
     for (int i = 0; i < strlen(str) / 2; i++)
     {
         if (str[i] != str[length])
         {        
-            check = false;
+            return false;
             break;
         }
         length--;        
     }
 
-	return check;
+	return true;
 }
 
 void parseStringLetters(const char str[], int& vowelsCount, int& constonantsCount)
 {
-    const char letters[6] = { 'a','o','u','i','e','y' };
-    
     for (int i = 0; i < strlen(str); i++)
     {
-        for (int j = 0; j < strlen(letters); j++)
+        if(isalpha(str[i]))
         {
-            if (tolower(str[i]) == letters[j])
+            const char symbol = tolower(str[i]);
+            if (symbol == 'a' || symbol == 'o' || symbol == 'u' || symbol == 'i' || symbol == 'e' || symbol == 'y')
             {
                 vowelsCount++;
-                break;
             }
+            else 
+            {
+                constonantsCount++;
+            }            
         }
     }
-
-    constonantsCount = strlen(str) - vowelsCount;
 }
 
 bool isEqual(const char str1[], const char str2[])
 {
-    if (strlen(str1) != strlen(str2))
+    const int length = strlen(str1);
+
+    if (length != strlen(str2))
+    {
         return false;
+    }
 
-    const int diff = 32;
-
-    for (int i = 0; i < strlen(str1); i++)
+    for (int i = 0; i < length; i++)
     {
         if (str1[i] != str2[i])
         {
-            int temp_diff = int(str1[i]) - int(str2[i]);
-            temp_diff *= (temp_diff < 0) ? -1 : 1;
-
-            if (temp_diff != diff)
-            {                
-                return false;                
-            }            
+            return false;
         } 
     }
 
