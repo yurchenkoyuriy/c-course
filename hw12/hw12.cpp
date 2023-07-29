@@ -11,6 +11,8 @@ enum class SortingDirection
 void swap(int* x, int* y);
 int partition(int arr[], int low, int high);
 void quickSort(int arr[], int low, int high);
+void printArray(const int* arr, int size);
+void print2dArray(const int arr[][COLUMNS], int rows, int columns);
 void bubleSort(int arr[], int size); // Task 1
 void sort(int arr[][COLUMNS], int rows, SortingDirection); // Task 2
 
@@ -29,53 +31,27 @@ int main()
     // Task 1
     std::cout << "Unsorted array: " << std::endl;
     
-    for (int i = 0; i < SIZE; i++) 
-    {
-        std::cout << arr[i] << ' ';
-    }
+    printArray(arr, SIZE);
     
     std::cout << std::endl << "Buble sorted array: " << std::endl;
     
     bubleSort(arr, SIZE);
+    printArray(arr, SIZE);
 
     // Task 2
     std::cout << std::endl << "Unsorted array: " << std::endl;
 
-    for (int i = 0; i < ROWS; i++)
-    {
-        for (int j = 0; j < COLUMNS; j++)
-        {
-            std::cout << arr_2d[i][j] << ' ';
-        }
-        std::cout << std::endl;
-    }
+    print2dArray(arr_2d, ROWS, COLUMNS);
 
     std::cout << std::endl << "Quick Sorted array by Column: " << std::endl;
     
-    sort(arr_2d, ROWS, SortingDirection::byColumn);
-    
-    for (int i = 0; i < ROWS; i++)
-    {
-        for (int j = 0; j < COLUMNS; j++)
-        {
-            std::cout << arr_2d[i][j] << ' ';
-        }
-        std::cout << std::endl;
-    }
+    sort(arr_2d, ROWS, SortingDirection::byColumn);    
+    print2dArray(arr_2d, ROWS, COLUMNS);
 
     std::cout << std::endl << "Quick Sorted array by Rows: " << std::endl;
 
     sort(arr_2d, COLUMNS, SortingDirection::ByRows);
-
-    for (int i = 0; i < ROWS; i++)
-    {
-        for (int j = 0; j < COLUMNS; j++)
-        {
-            std::cout << arr_2d[i][j] << ' ';
-        }
-        std::cout << std::endl;
-    }
-
+    print2dArray(arr_2d, ROWS, COLUMNS);
 }
 
 void bubleSort(int arr[], int size)
@@ -89,8 +65,6 @@ void bubleSort(int arr[], int size)
                 swap(&arr[j - 1], &arr[j]);
             }
         }
-        
-        std::cout << arr[i] << ' ';
     }
 }
 
@@ -168,5 +142,25 @@ void quickSort(int arr[], int low, int high)
 
         quickSort(arr, low, pi - 1);
         quickSort(arr, pi + 1, high);
+    }
+}
+
+void printArray(const int* arr, int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        std::cout << arr[i] << ' ';
+    }
+}
+
+void print2dArray(const int arr[][COLUMNS], int rows, int columns)
+{
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < columns; j++)
+        {
+            std::cout << arr[i][j] << ' ';
+        }
+        std::cout << std::endl;
     }
 }
