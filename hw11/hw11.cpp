@@ -8,7 +8,7 @@ int main()
     const int LENGTH = 10;
     int elem = 5;    
     
-    int arr[LENGTH] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    int arr[LENGTH] = { 5, 2, 0, 6, 10, 15, 9, 1, 3, 8 };    
     int arr_2d[ROWS][COLUMNS] = {
         {1, 2, 3, 4, 5 },
         {6, 7, 8, 9, 10 },
@@ -17,10 +17,17 @@ int main()
         {21, 22, 23, 24, 25 }
     };
 
-    // Part 1
-    linearSearch(arr_2d, ROWS, COLUMNS, elem);
+    // Part 1    
+    if (linearSearch(arr_2d, ROWS, COLUMNS, elem))
+    {
+        std::cout << "Element " << elem << " was found!" << std::endl;
+    }
+    else
+    {
+        std::cout << "Element " << elem << " wasn't found!" << std::endl;
+    }
 
-    // Part 2
+    // Part 2    
     if (isSorted(arr, LENGTH, SortingDirection::ascending))
     {
         std::cout << "Array sorted" << std::endl;

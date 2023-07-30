@@ -1,7 +1,7 @@
 #include <iostream>
 #include "ArrayFunctions.h"
 
-void linearSearch(const int arr[][5], int rows, int cols, int elem)
+bool linearSearch(const int arr[][SIZE], int rows, int cols, int elem)
 {	
 	for (int i = 0; i < rows; i++)
 	{
@@ -9,30 +9,32 @@ void linearSearch(const int arr[][5], int rows, int cols, int elem)
 		{
 			if (arr[i][j] == elem)
 			{
-				std::cout << "Element " << elem << " was found!" << std::endl;				
+				return true;
 				break;
 			}
 		}
 	}
+
+	return false;
 }
 
 bool isSorted(const int* arr, int size, SortingDirection direction)
 {	
-	int high = size - 1;
+	int next = 1;
 
-	for (int i = 0; i < high; i++)
+	for (int i = 0; i < size - 1; i++)
 	{
-		if ( ((int)direction && arr[i] > arr[high]) || (!(int)direction && arr[i] < arr[high]) )
+		if (((int)direction && arr[i] > arr[next]) || (!(int)direction && arr[i] < arr[next]))
 		{
 			return false;
 		} 		
-		high--;
+		next++;
 	}
 	return true;
 
 }
 
-void arrayTraversal(const int arr[][5], int rows, int cols)
+void arrayTraversal(const int arr[][SIZE], int rows, int cols)
 {
 	for (int j = cols - 1; j >= 0; j--)
 	{
@@ -44,7 +46,7 @@ void arrayTraversal(const int arr[][5], int rows, int cols)
 	}
 }
 
-void arrayTraversalSecondVersion(const int arr[][5], int rows, int cols)
+void arrayTraversalSecondVersion(const int arr[][SIZE], int rows, int cols)
 {
 	bool flag = true;
 
