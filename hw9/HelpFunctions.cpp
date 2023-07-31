@@ -32,7 +32,6 @@ bool isPalindrom(const char str[])
         if (str[i] != str[length])
         {        
             return false;
-            break;
         }
         length--;        
     }
