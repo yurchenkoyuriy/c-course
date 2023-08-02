@@ -10,7 +10,6 @@ bool linearSearch(const int arr[][SIZE], int rows, int cols, int elem)
 			if (arr[i][j] == elem)
 			{
 				return true;
-				break;
 			}
 		}
 	}
@@ -20,18 +19,14 @@ bool linearSearch(const int arr[][SIZE], int rows, int cols, int elem)
 
 bool isSorted(const int* arr, int size, SortingDirection direction)
 {	
-	int next = 1;
-
 	for (int i = 0; i < size - 1; i++)
 	{
-		if (((int)direction && arr[i] > arr[next]) || (!(int)direction && arr[i] < arr[next]))
+		if (((int)direction && arr[i] > arr[i + 1]) || (!(int)direction && arr[i] < arr[i + 1]))
 		{
 			return false;
 		} 		
-		next++;
 	}
 	return true;
-
 }
 
 void arrayTraversal(const int arr[][SIZE], int rows, int cols)
