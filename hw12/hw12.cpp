@@ -93,17 +93,7 @@ void sort(int arr[][COLUMNS], int rows, SortingDirection direction)
     {     
         for (int i = 0; i < ROWS; i++)
         {            
-            for (int j = 0; j < COLUMNS; j++)
-            {
-                temp_arr[j] = arr[i][j];
-            }
-
-            quickSort(temp_arr, 0, COLUMNS - 1);
-
-            for (int j = 0; j < COLUMNS; j++)
-            {
-                arr[i][j] = temp_arr[j];
-            }
+            quickSort(arr[i], 0, COLUMNS - 1);
         }        
     }
 
