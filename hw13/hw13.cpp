@@ -217,7 +217,7 @@ bool checkWord(char* userWord, char* hiddenWord, char* result)
 
     while (*hiddenWord != '\0')
     {
-        if (tolower(*userWord) == *hiddenWord)
+        if (tolower(*userWord) == tolower(*hiddenWord))
         {
             *result = toupper(*hiddenWord);
             guessingLetter[i] = '*';
@@ -246,7 +246,7 @@ bool checkWord(char* userWord, char* hiddenWord, char* result)
     {   
         for (int j = 0; j < SIZEWORD; j++)
         {
-            if (tolower(*userWord) == guessingLetter[j])
+            if (tolower(*userWord) == tolower(guessingLetter[j]))
             {                    
                 *result = guessingLetter[j];
                 guessingLetter[j] = '*';
