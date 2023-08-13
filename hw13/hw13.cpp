@@ -6,11 +6,13 @@
 #include <ctime>
 
 const int SIZEWORD = 5;
+const int DATELENGTH = 9;
 const char USERDATA[] = "metadata.txt";
 const char WORDSBASE[] = "words.txt";
 
 int randomValue();
-int getDayOfYear();
+int getDailyWord();
+int getDate();
 void saveProgress(const int data, const char fileName[] = USERDATA);
 int loadProgress(const char fileName[] = USERDATA);
 bool getWord(const int line, char* hiddenWord, const char fileName[] = WORDSBASE);
@@ -35,7 +37,7 @@ int main()
             std::cout << std::endl << "RESULT : " << result << std::endl;
             std::cout << "ENTER  : ";
             std::cin >> userWord;
-            
+
             tries++;
             
             if (checkWord(userWord, hiddenWord, result))
@@ -49,7 +51,7 @@ int main()
                 }
                 else 
                 {
-                    saveProgress(getDayOfYear());
+                    saveProgress(getDate());
                 }
                                 
                 int i = 0;
@@ -77,17 +79,15 @@ int main()
                 break;
             }
             else if (userChoice == 1)
-            {
-                int today = getDayOfYear();
-                if (today == loadProgress())
+            {                
+                if (getDate() == loadProgress())
                 {
                     std::cout << std::endl << "Already found! Come back tommorow!" << std::endl << std::endl;
                 } 
                 else
                 {   
-                    if (getWord(today, hiddenWord))
-                    {
-                        std::cout << hiddenWord;
+                    if (getWord(getDailyWord(), hiddenWord))
+                    {                        
                         gameStart = !gameStart;
                     } 
                     else 
@@ -101,7 +101,6 @@ int main()
             {   
                 if (getWord(randomValue(), hiddenWord))
                 {
-                    std::cout << hiddenWord;
                     gameStart = !gameStart;
                     randomGame = !randomGame;
                 }
@@ -121,12 +120,24 @@ int randomValue()
     return std::rand() % GeneratingRange + 1;
 }
 
-int getDayOfYear()
+int getDailyWord()
 {
     std::time_t t = std::time(nullptr);
     std::tm* now = std::localtime(&t);
 
     return now->tm_yday;
+}
+
+int getDate()
+{
+    std::time_t t = std::time(nullptr);
+    std::tm* now = std::localtime(&t);
+
+    int days = static_cast<int>(now->tm_mday) * 1000000;
+    int month = (static_cast<int>(now->tm_mon) + 1) * 10000;
+    int year = static_cast<int>(now->tm_year) + 1900;
+
+    return days + month + year;
 }
 
 void saveProgress(const int data, const char fileName[])
@@ -145,7 +156,7 @@ int loadProgress(const char fileName[])
 
     if (file)
     {
-        const unsigned int MaxLineSize = 4;
+        const unsigned int MaxLineSize = DATELENGTH;
         char word[MaxLineSize]{};
 
         while (!file.eof())
@@ -198,46 +209,53 @@ bool getWord(const int line, char* hiddenWord, const char fileName[]) {
     return true;
 }
 
-bool checkWord(char* userWord, char* hiddenWord, char* result) 
+bool checkWord(char* userWord, char* hiddenWord, char* result)
 {
-    int iteration = 0;
+    int guessingLetter[SIZEWORD] = {};
+    int i = 0;    
     int finds = 0;
-    while (iteration < SIZEWORD)
-    {           
-        
-        hiddenWord += iteration;
+
+    while (*hiddenWord != '\0')
+    {
         if (tolower(*userWord) == *hiddenWord)
         {
+            *result = toupper(*hiddenWord);
+            guessingLetter[i] = '*';
+            *userWord = '!';
             finds++;
-            *result = toupper(*hiddenWord);            
-            hiddenWord -= iteration;
         }
         else
         {
-            hiddenWord -= iteration;
+            guessingLetter[i] = *hiddenWord;
             *result = '*';
-            for (int i = 0; i < SIZEWORD; i++)
-            {
-                if (tolower(*userWord) == *hiddenWord)
-                {
-                    if (iteration == i)
-                    {
-                        finds++;
-                        *result = toupper(*hiddenWord);
-                    } 
-                    else 
-                    {
-                        *result = *hiddenWord;
-                    }                    
-                }
-                hiddenWord++;
-            }
-            hiddenWord -= SIZEWORD;
         }
-        userWord++;        
+
+        userWord++;
         result++;
-        iteration++;
+        hiddenWord++;
+        i++;
+    }
+
+    if (finds == SIZEWORD)
+        return true;
+
+    userWord -= SIZEWORD;
+    result -= SIZEWORD;
+            
+    for (int i = 0; i < SIZEWORD; i++)
+    {   
+        for (int j = 0; j < SIZEWORD; j++)
+        {
+            if (tolower(*userWord) == guessingLetter[j])
+            {                    
+                *result = guessingLetter[j];
+                guessingLetter[j] = '*';
+            }                
+        }               
+        
+        userWord++;
+        result++;
     }  
 
-    return (finds == SIZEWORD) ? true : false;
+    return false;
 }
