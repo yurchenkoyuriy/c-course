@@ -33,24 +33,26 @@ void sortStudentByAvgMarks(Student students[],const int size)
 
 Student* bestStudent(Student students[], const int size) {
     Student* bestStudent = &students[0];
+    double tempAvgBestStudent = avgMark(*bestStudent);
 
     for (int i = 0; i < size; i++)
     {
-        if (avgMark(*bestStudent) < avgMark(students[i]))
+        if (tempAvgBestStudent < avgMark(students[i]))
         {
             bestStudent = &students[i];
+            tempAvgBestStudent = avgMark(*bestStudent);
         }
     }
 
     return bestStudent;
 }
 
-int topStudents(Student students[], const int size) {
+int topStudents(Student students[], const int size, const int topStep = 75) {
     int count = 0;
 
     for (int i = 0; i < size; i++)
     {
-        if (avgMark(students[i]) > 75)
+        if (avgMark(students[i]) > topStep)
         {
             count++;
         }
