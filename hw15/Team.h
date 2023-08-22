@@ -1,3 +1,4 @@
+#include <vector>
 #include <string>
 #include "Player.h"
 
@@ -14,14 +15,13 @@ public:
     {
         sizeTeam = 0;
     }
-
-    std::string comandName;
-    int sizeTeam;
-
+    
     void addPlayer(Player* player);
     void removePlayer(Player* player);
+    std::string getTeamName() const { return comandName; };
 
 private:
-    int m_currentEmptyPlace = 0;        
-    Player* players[10] = { nullptr };
+    std::string comandName;
+    int sizeTeam;     
+    std::vector<Player*> players;
 };

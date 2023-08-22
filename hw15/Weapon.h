@@ -1,3 +1,4 @@
+#include <iostream>
 #include <string>
 
 class Weapon
@@ -13,6 +14,19 @@ public:
     {
     }
 
+    void updateWeapon(std::string arg_name, int arg_damage, int arg_range) {
+        name = arg_name;
+        damage = arg_damage;
+        range = arg_range;
+    }
+
+    void printWeaponInfo() const {
+        std::cout << "Weapon name: " << name << std::endl;
+        std::cout << "Weapon damage: " << damage << std::endl;
+        std::cout << "Weapon range: " << range << std::endl;
+    }
+
+private:
     std::string name;
     int damage;
     int range;

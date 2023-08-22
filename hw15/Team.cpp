@@ -2,29 +2,20 @@
 
 void Team::addPlayer(Player* player)
 {
-    if (player == nullptr)
-    {
-        return;
-    }
+    if (player == nullptr) { return; }
 
-    players[m_currentEmptyPlace] = player;
-    players[m_currentEmptyPlace]->team = this;
-    m_currentEmptyPlace++;
+    players.push_back(player);
+    players[players.size() - 1]->setTeam(this);
 }
 
 
 void Team::removePlayer(Player* player)
 {
-    for (int i = 0; i < m_currentEmptyPlace; ++i)
+    for (int i = 0; i < players.size(); ++i)
     {        
         if (players[i] == player) 
         {
-            players[i]->team = nullptr;
-            for (int j = i; j < m_currentEmptyPlace - 1; ++j) 
-            {
-                players[j] = players[j + 1];
-            }
-            m_currentEmptyPlace--;
+            players.erase(players.begin() + i);
             break;
         }
     }

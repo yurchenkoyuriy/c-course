@@ -6,11 +6,8 @@
 int main()
 {
     // Task 1
-    Rectangle rect1;
+    Rectangle rect1(3.2f, 4.2f);
     Rectangle rect2(4.3f, 6.2f);
-
-    rect1.length = 3.2f;
-    rect1.height = 4.2f;
 
     std::cout << "Area rect1: " << rect1.getArea() << std::endl;
     std::cout << "Perimeter rect1: " << rect1.getPerimeter() << std::endl;
@@ -29,12 +26,12 @@ int main()
     team.addPlayer(&player);
     team.addPlayer(&player2);
 
-    std::cout << "Add " << player.name << " and " << player2.name << " to " << team.comandName << " team." << std::endl;
+    std::cout << "Add " << player.getName() << " and " << player2.getName() << " to " << team.getTeamName() << " team." << std::endl;
 
     player.printPlayerInfo();
     player2.printPlayerInfo();
 
-    std::cout << "Remove " << player.name << " from " << team.comandName << " team." << std::endl;
+    std::cout << "Remove " << player.getName() << " from " << team.getTeamName() << " team." << std::endl;
 
     team.removePlayer(&player);
 

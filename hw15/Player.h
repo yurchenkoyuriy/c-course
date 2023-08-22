@@ -27,15 +27,18 @@ public:
     {
     }
 
-    std::string name;
-    int healPoint;
-    Speciality speciality;
-    Weapon weapon;
-    Team* team = nullptr;
-
     void addWeapon(std::string name, int damage, int range);
     void printPlayerInfo();
     void printSpeciality();
+    std::string getName() const { return name; };    
+    void setTeam(Team* team) { this->team = team; };
+
+private:
+    std::string name;
+    int healPoint;
+    Speciality speciality;
+    Weapon weapon;    
+    Team* team = nullptr;
 };
 
 #endif // PLAYER_H

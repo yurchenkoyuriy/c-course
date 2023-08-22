@@ -5,9 +5,7 @@
 
 void Player::addWeapon(std::string name, int damage, int range)
 {
-	weapon.name = name;
-	weapon.damage = damage;
-	weapon.range = range;
+    weapon.updateWeapon(name, damage, range);
 }
 
 void Player::printPlayerInfo()
@@ -15,13 +13,11 @@ void Player::printPlayerInfo()
 	std::cout << "Name: " << name << std::endl;
 	std::cout << "HP: " << healPoint << std::endl;
     this->printSpeciality();
-	std::cout << "Weapon name: " << weapon.name << std::endl;
-	std::cout << "Weapon damage: " << weapon.damage << std::endl;
-	std::cout << "Weapon range: " << weapon.range << std::endl;
-
+	weapon.printWeaponInfo();
+	
 	if (team != nullptr)
 	{
-		std::cout << "Team: " << team->comandName << std::endl;
+		std::cout << "Team: " << team->getTeamName() << std::endl;
 	}
 
 	std::cout << std::endl;
