@@ -1,5 +1,21 @@
 #include "Rectangle.h"
 
+Rectangle::Rectangle()
+{
+    rectangleCount++;
+}
+
+Rectangle::Rectangle(float length_arg, float height_arg) :
+    length(length_arg), height(height_arg)
+{
+    rectangleCount++;
+}
+
+Rectangle::~Rectangle()
+{
+    rectangleCount--;
+}
+
 float Rectangle::getArea()
 {
     return length * height;

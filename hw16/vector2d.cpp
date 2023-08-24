@@ -1,5 +1,16 @@
 #include "vector2d.h"
 
+Vector2d::Vector2d() : x(0.0f), y(0.0f)
+{
+
+}
+
+Vector2d::Vector2d(float x_arg, float y_arg) : x(x_arg), y(y_arg)
+{
+
+}
+
+Vector2d::~Vector2d() = default;
 
 Vector2d& Vector2d::operator=(Vector2d& vector)
 {
