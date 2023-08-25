@@ -14,7 +14,7 @@ public:
 class RangedWeapon : public Weapon
 {
 public:	
-	int getDamageRate(int distance, int speed = 0) const override { return static_cast<int>(getPrecision(distance + speed) * 10); }
+	int getDamageRate(int distance, int speed = 0) const override { return static_cast<int>(getPrecision(distance - speed) * 10); }
 	
 protected:	
 	virtual float getPrecision(int distance) const { return 1.0f; }	
