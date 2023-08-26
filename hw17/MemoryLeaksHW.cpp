@@ -42,6 +42,7 @@ StringCustom& StringCustom::operator=(const char* c_str)
         {
             m_str[i] = c_str[i];
         }
+        m_str[size] = '\0';
     }
 
     return *this;

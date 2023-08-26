@@ -28,8 +28,7 @@ int main()
     std::cout << newArray3.getSize() << std::endl;
     std::cout << "----------------------------------" << std::endl;
 
-    newArray3.clear();
-    std::cout << newArray3[0] << std::endl;
+    newArray3.clear();    
     std::cout << newArray3.getSize() << std::endl;
     std::cout << "----------------------------------" << std::endl;
 

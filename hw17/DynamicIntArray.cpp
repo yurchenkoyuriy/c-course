@@ -46,6 +46,11 @@ DynamicIntArray& DynamicIntArray::operator=(const DynamicIntArray& other)
 
 int& DynamicIntArray::operator[](std::size_t index) 
 {
+	if (index >= size)
+	{
+		std::cerr << "operator[] index: " << index << " is out of range!";
+	}
+
 	return int_array[index];
 }
 
@@ -79,9 +84,9 @@ std::size_t DynamicIntArray::getSize() const
 
 void DynamicIntArray::clear() 
 {
-	delete[] int_array;
-	size = 0;
-	int_array = new int[size];
+	delete[] int_array;	
+	size = 0;	
+	int_array = nullptr;
 }
 
 void DynamicIntArray::push_back(int element) 
