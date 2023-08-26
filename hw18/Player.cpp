@@ -32,9 +32,9 @@ void Player::attack(Player& other, int distance)
 	std::cout << "Player " << getName() << " attacked Player " << other.getName() <<
 		" with weapon " << m_weapon->getName() << " with damage " << damage << std::endl;
 
-	std::cout << "Player " << other.getName() << " has Health left : " << other.getHealth() << std::endl;
+	std::cout << "Player " << other.getName() << " has Health left : " << std::to_string(other.getHealth()) << std::endl;
 
-	if (other.isEliminated())
+	if (other.getHealth() < 0)
 	{
 		other.setHealth(0);
 		std::cout << "Player " << other.getName() << " was eliminated!\n";
