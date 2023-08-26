@@ -3,7 +3,7 @@
 
 DynamicIntArray::DynamicIntArray()  
 {
-	size = 100;
+	size = 10;
 	int_array = new int[size];
 }
 
