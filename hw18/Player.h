@@ -17,7 +17,7 @@ public:
 
 
 	std::string getName() const { return m_name; }
-	std::string getHealth() { return std::to_string(m_health); }
+	int getHealth() const { return m_health; }
 	int getBaseDamage(int distance) { return m_weapon->getDamageRate(distance, m_speed); }
 	int getSpeed() const { return m_speed; }
 	void setSpeed(const int speed) { m_speed = speed; }
