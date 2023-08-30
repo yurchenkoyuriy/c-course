@@ -25,7 +25,6 @@ void Player::attack(Player& other, int distance)
 		return;
 	}
 
-	//#TODO: Optional: Add your own damage-related modifier
 	const int damage = static_cast<int>(m_weapon->getDamageRate(distance, m_speed) * m_class->getDamageMultiplier() / other.m_class->getDefenseMultiplier());
 	other.takingDamage(damage);
 

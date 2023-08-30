@@ -2,8 +2,7 @@
 #include <string>
 
 class PlayerClass
-{
-	//FEEL free to add other unique properties
+{	
 public:
 	virtual ~PlayerClass() = default;
 
@@ -19,8 +18,7 @@ class DefaultClass : public PlayerClass
 
 class DefenderClass : public DefaultClass
 {
-public:
-	//Leave damage multiplier as is
+public:	
 	virtual float getDefenseMultiplier() const override { return 1.1f; }
 };
 

@@ -6,7 +6,6 @@
 
 int main()
 {
-	//Game cycle
 	Player player1("OnePunchMan", new SniperRifle);
 	Player player2("JohnCena", new Axe, new DefenderClass);
 	Player player3("Altair", new Knife, new AttackerClass);
