@@ -149,7 +149,7 @@ int main()
     Derived1 d1;
     d1.print();
 
-    Base* bp = dynamic_cast<Base*>(&d1);
+    Base* bp = &d1;
     bp->print();
 
     Derived2* dp2 = dynamic_cast<Derived2*>(bp);
@@ -165,12 +165,12 @@ int main()
     Base* base = dynamic_cast<Derived2*>(d2);
 
     if (base != nullptr) {
-        base->print();
-        delete d2;
+        base->print();        
     }
     else {
         std::cout << "Failed to cast to Derived2" << std::endl;
     }
+    delete d2;
 
     //CASE 3
     std::string petChoice;
