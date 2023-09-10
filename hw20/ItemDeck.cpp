@@ -14,7 +14,12 @@ ItemDeck::ItemDeck()
 
 ItemDeck::~ItemDeck()
 {
-	//TODO: FREE MEMORY
+	for (Item* item : m_itemsDataBase)
+	{
+		delete item;
+	}
+
+	m_itemsDataBase.clear();
 }
 
 Item* ItemDeck::generateItem()

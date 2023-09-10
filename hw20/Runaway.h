@@ -28,7 +28,7 @@ public:
 	Runaway_LevelDowngradeIf(int level, int minimalMunchkinLevel)
 		: Runaway_LevelDowngrade(level), m_minimalMunchkinLevelToApply(minimalMunchkinLevel) {}
 	void apply(Munchkin* munchkin) override;
-	std::string getFullInfo() const override { return "Lose 1 level if your level is below 5."; }
+	std::string getFullInfo() const override { return "Lose 1 level if your level is below " + std::to_string(m_minimalMunchkinLevelToApply) + "."; }
 
 private:
 	int m_minimalMunchkinLevelToApply;

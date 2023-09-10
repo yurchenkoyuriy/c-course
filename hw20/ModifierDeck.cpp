@@ -9,7 +9,10 @@ ModifierDeck::ModifierDeck()
 
 ModifierDeck::~ModifierDeck()
 {
-	//TODO: Clear memory
+	for (Modifier* modifier : m_modifiersDatabase)
+	{
+		delete modifier;
+	}
 }
 
 Modifier* ModifierDeck::generateModifier()
@@ -21,7 +24,9 @@ Modifier* ModifierDeck::generateModifier()
 
 	unsigned int idx = std::rand() % m_modifiersDatabase.size();
 	Modifier* modifier = m_modifiersDatabase[idx];
-	m_modifiersDatabase.erase(m_modifiersDatabase.begin() + idx);
+	m_modifiersDatabase.erase(std::remove_if(m_modifiersDatabase.begin(), m_modifiersDatabase.end(),
+		[modifier](const Modifier* m) { return m == modifier; }), m_modifiersDatabase.end());
+
 	return modifier;
 }
 

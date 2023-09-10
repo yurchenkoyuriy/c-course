@@ -52,27 +52,29 @@ void Munchkin::removeRandomModifierFromHand()
     }
 
     unsigned int idx = std::rand() % m_modifiers.size();
-    m_modifiers.erase(m_modifiers.begin() + idx);
+    std::swap(m_modifiers[idx], m_modifiers.back());
+    m_modifiers.pop_back();
 }
 
 void Munchkin::removeBestItemEquipped()
 {
-    if (m_items.size() == 0)
+    if (m_items.empty())
     {
         return;
     }
 
-    int power = 0;
-    int idx = 0;
-        
-    for (size_t i = 0; i < m_items.size(); ++i)
-    {
-        if (m_items[i]->getBasePower() > power)
+    auto maxItemIt = std::max_element(m_items.begin(), m_items.end(),
+        [](const Item* item1, const Item* item2)
         {
-            power = m_items[i]->getBasePower();
-            idx = i;
-        }
-    }
+            return item1->getBasePower() < item2->getBasePower();
+        });
 
-    m_items.erase(m_items.begin() + idx);
+    if (maxItemIt != m_items.end())
+    {
+        m_items.erase(std::remove_if(m_items.begin(), m_items.end(),
+            [maxItemIt](const Item* item)
+            {
+                return item == *maxItemIt;
+            }), m_items.end());
+    }
 }
