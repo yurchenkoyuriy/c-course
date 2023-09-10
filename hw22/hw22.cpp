@@ -17,12 +17,13 @@ unsigned int uniqueWordsCount(const std::string& line)
     std::vector<std::string> words;
     std::string word;
 
+    std::set<std::string> uniqueWords{};
+
     while (iss >> word) 
     {
-        words.push_back(word);
+        uniqueWords.insert(word);
     }
         
-    const std::set<std::string, std::less<>> uniqueWords(words.begin(), words.end());
     return uniqueWords.size();
 }
 
@@ -76,7 +77,7 @@ bool balancedBrackets(const std::string& line)
         }
     }
 
-    return (brackets.empty()) ? true : false;
+    return brackets.empty();
 }
 
 int main()
