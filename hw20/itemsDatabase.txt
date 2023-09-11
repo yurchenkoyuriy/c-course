@@ -1,0 +1,4 @@
+Weapon;The Sword of DOOM;5
+UndeadWeapon;Stinky knife;2
+RagnarokWeapon;Blades of Chaos;1
+UndeadWeapon;Holy grenade;4
