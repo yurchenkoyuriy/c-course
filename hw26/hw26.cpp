@@ -14,7 +14,7 @@ int sumVector(const std::vector<int>& vec)
 
     auto end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> duration = end - start;
-    std::cout << "Time: " << duration.count() << " seconds. ";
+    std::cout << "Main. Work time: " << duration.count() << " seconds. ";
 
     return sum;
 }
@@ -52,7 +52,7 @@ int sumVectorMultiThread(const std::vector<int>& vec, const int numThreads)
 
     auto end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> duration = end - start;
-    std::cout << numThreads << " time: " << duration.count() << " seconds. ";
+    std::cout << "Streams " << numThreads << ". Work time: " << duration.count() << " seconds. ";
 
     return totalSum;    
 }
