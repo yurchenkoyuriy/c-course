@@ -1,5 +1,6 @@
 #pragma once
 #include <cstdlib>
+#include <stdexcept>
 
 template <typename T, int size>
 class InplaceArray
@@ -94,9 +95,16 @@ template<typename T, int size>
 T& InplaceArray<T, size>::operator[](std::size_t index)
 {
     if (index < m_stackSize)
+    {
         return m_stackData[index];
+    }
 
-    return m_heapData[index - m_stackSize];
+    if (index < m_stackSize + m_heapSize) 
+    {
+        return m_heapData[index - m_stackSize];
+    }
+        
+    throw std::out_of_range("Index out of range");
 }
 
 template<typename T, int size>
